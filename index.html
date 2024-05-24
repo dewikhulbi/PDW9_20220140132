@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pendaftaran Mahasiswa</title>
+    <style>
+      /* Style untuk membuat form berada di tengah halaman */
+      body {
+        background-image: url('https://i.pinimg.com/564x/79/ab/04/79ab04ae66154a34c2518a69bf6c6a23.jpg'); /* Ganti 'nama_file_gambar.jpg' dengan nama file gambar Anda */
+        background-size: cover; /* Atur agar gambar latar belakang menutupi seluruh area */
+        background-position: center; /* Atur posisi gambar latar belakang ke tengah */
+        font-family: Arial, sans-serif; /* Jenis font */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column; /* Mengatur elemen dalam kolom */
+      }
+
+      /* Style untuk judul form */
+      h1 {
+        font-size: 36px; /* Atur ukuran font judul */
+        font-weight: bold; /* Atur ketebalan font judul */
+        margin-bottom: 30px; /* Atur jarak bawah judul */
+        color: #d7b1b1; /* Warna teks judul */
+        text-align: center; /* Pusatkan teks */
+      }
+
+      /* Style untuk form */
+      #registrationForm {
+        background-color: #cfc5e1; /* Warna latar belakang form */
+        max-width: 400px; /* Atur lebar maksimum form */
+        width: 100%; /* Gunakan lebar maksimum */
+        padding: 30px; /* Atur padding form */
+        border-radius: 10px; /* Atur radius sudut form */
+        box-shadow: 0 0 20px rgba(66, 60, 60, 0.1); /* Atur bayangan form */
+      }
+
+      /* Style untuk label */
+      label {
+        font-size: 16px; /* Atur ukuran font label */
+        font-weight: bold; /* Atur ketebalan font label */
+        color: #555; /* Warna teks label */
+        margin-bottom: 10px; /* Atur jarak bawah label */
+      }
+
+      /* Style untuk input dan select */
+      input, select {
+        width: 100%; /* Gunakan lebar maksimum */
+        padding: 10px; /* Atur padding */
+        border: 1px solid #a409cf; /* Atur border */
+        border-radius: 5px; /* Atur radius sudut */
+        margin-bottom: 20px; /* Atur jarak bawah */
+      }
+
+      /* Style untuk tombol */
+      button[type="submit"] {
+        background-color: #4d749e; /* Atur warna latar belakang tombol */
+        color: #fff; /* Atur warna teks tombol */
+        border: none; /* Hapus border tombol */
+        padding: 12px 20px; /* Atur padding tombol */
+        border-radius: 5px; /* Atur radius sudut tombol */
+        cursor: pointer; /* Ubah kursor menjadi pointer saat mengarah ke tombol */
+        font-size: 16px; /* Atur ukuran font tombol */
+      }
+
+      button[type="submit"]:hover {
+        background-color: #5a0970; /* Ubah warna latar belakang saat tombol dihover */
+      }
+
+      /* Style untuk form konfirmasi */
+      #confirmForm {
+        display: none;
+        background-color: #fff; /* Warna latar belakang form konfirmasi */
+        max-width: 400px; /* Atur lebar maksimum form konfirmasi */
+        width: 100%; /* Gunakan lebar maksimum */
+        padding: 30px; /* Atur padding form konfirmasi */
+        border-radius: 10px; /* Atur radius sudut form konfirmasi */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Atur bayangan form konfirmasi */
+        position: absolute; /* Gunakan posisi absolut */
+        top: 50%; /* Atur posisi vertikal ke tengah */
+        left: 50%; /* Atur posisi horizontal ke tengah */
+        transform: translate(-50%, -50%); /* Geser form ke tengah */
+      }
+
+      /* Style untuk judul form konfirmasi */
+      #confirmForm h2 {
+        font-size: 24px; /* Atur ukuran font judul form konfirmasi */
+        font-weight: bold; /* Atur ketebalan font judul form konfirmasi */
+        margin-bottom: 20px; /* Atur jarak bawah judul form konfirmasi */
+        color: #333; /* Warna teks judul form konfirmasi */
+        text-align: center; /* Pusatkan teks */
+      }
+
+      /* Style untuk pesan konfirmasi */
+      #confirmMessage {
+        margin-bottom: 20px; /* Atur jarak bawah pesan konfirmasi */
+        color: #555; /* Warna teks pesan konfirmasi */
+        text-align: center; /* Pusatkan teks */
+      }
+
+      /* Style untuk aksi konfirmasi */
+      #confirmActions {
+        display: flex; /* Tampilkan aksi dalam baris */
+        justify-content: center; /* Pusatkan aksi */
+      }
+
+      /* Style untuk tombol konfirmasi */
+      #confirmActions button {
+        margin: 0 10px; /* Atur margin */
+        padding: 10px 20px; /* Atur padding */
+        border: none; /* Hapus border */
+        border-radius: 5px; /* Atur radius sudut */
+        cursor: pointer; /* Ubah kursor menjadi pointer saat mengarah ke tombol */
+        font-size: 16px; /* Atur ukuran font */
+      }
+
+      #confirmActions button.yes {
+        background-color: #28a745; /* Atur warna latar belakang tombol Ya */
+        color: #fff; /* Atur warna teks tombol Ya */
+      }
+
+      #confirmActions button.no {
+        background-color: #dc3545; /* Atur warna latar belakang tombol Tidak */
+        color: #fff; /* Atur warna teks tombol Tidak */
+      }
+      /* Style untuk pesan konfirmasi */
+        #alertMessage {
+        margin-bottom: 20px; /* Atur jarak bawah pesan konfirmasi */
+        color: rgb(136, 177, 226); /* Ubah warna teks pesan konfirmasi */
+        text-align: center; /* Pusatkan teks */
+        }
+
+    </style>
+  </head>
+  <body>
+    <h1>Pendaftaran Organisasi Peminatan</h1> <!-- Pindahkan judul di atas form -->
+    <form id="registrationForm">
+      <label for="name">Nama Mahasiswa:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="nim">NIM:</label>
+      <input type="number" id="nim" name="nim" required>
+
+      <label for="schedule">Pilih jadwal wawancara:</label>
+      <div style="display: flex; align-items:left;">
+        <input type="radio" id="schedule1" name="schedule" value="pagi" required style="margin-right: 5px;">
+        <label for="schedule1" style="margin-right: 10pc;">Pagi</label>
+        
+        <input type="radio" id="schedule2" name="schedule" value="siang" required style="margin-right: 5px;">
+        <label for="schedule2">Siang</label>
+      </div>
+      
+      <label for="category">Pilih peminatan:</label>
+      <select id="category" name="category" required>
+        <option value="">Pilih opsi</option>
+        <option value="Iptek">Iptek</option>
+        <option value="Humas">Humas</option>
+        <option value="SBO">SBO</option>
+      </select>
+
+      <button type="submit">Kirim</button>
+    </form>
+
+    <div id="confirmForm">
+      <h2>Konfirmasi Pendaftaran</h2>
+      <div id="confirmMessage"></div>
+      <div id="confirmActions"></div>
+    </div>
+
+    <div id="alertForm">
+      <div id="alertContent">
+        <div id="alertMessage"></div>
+        <div id="alertActions"></div>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("registrationForm");
+      const alertForm = document.getElementById("alertForm");
+      const alertMessage = document.getElementById("alertMessage");
+      const alertActions = document.getElementById("alertActions");
+      const confirmForm = document.getElementById("confirmForm");
+      const confirmMessage = document.getElementById("confirmMessage");
+      const confirmActions = document.getElementById("confirmActions");
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const nameValue = document.getElementById("name").value;
+        const nimValue = document.getElementById("nim").value;
+        const scheduleValue = document.querySelector('input[name="schedule"]:checked').value;
+        const categoryValue = document.getElementById("category").value;
+
+        confirmMessage.innerHTML = `<p><strong>Nama Mahasiswa:</strong> ${nameValue}</p>
+                                    <p><strong>NIM:</strong> ${nimValue}</p>
+                                    <p><strong>Jadwal Wawancara:</strong> ${scheduleValue}</p>
+                                    <p><strong>Kategori:</strong> ${categoryValue}</p>`;
+        confirmActions.innerHTML = `<button id="confirmButton" class="yes">Ya</button> 
+                                     <button id="cancelButton" class="no">Tidak</button>`;
+        confirmForm.style.display = "flex";
+
+        const confirmButton = document.getElementById("confirmButton");
+        confirmButton.addEventListener("click", function() {
+          confirmForm.style.display = "none";
+          alertMessage.innerText = "Terima kasih, " + nameValue + " telah terdaftar!";
+          alertActions.innerHTML = `<button id="okButton">OK</button>`;
+          alertForm.style.display = "flex";
+
+          const okButton = document.getElementById("okButton");
+          okButton.addEventListener("click", function() {
+            alertForm.style.display = "none";
+          });
+        });
+
+        const cancelButton = document.getElementById("cancelButton");
+        cancelButton.addEventListener("click", function() {
+          confirmForm.style.display = "none";
+          alertMessage.innerText = "Pendaftaran dibatalkan.";
+          alertActions.innerHTML = `<button id="okButton">OK</button>`;
+          alertForm.style.display = "flex";
+
+          const okButton = document.getElementById("okButton");
+          okButton.addEventListener("click", function() {
+            alertForm.style.display = "none";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
